@@ -1,0 +1,123 @@
+<div id="layoutSidenav">
+   <!-- <div id="layoutSidenav_nav">
+      <app-admin-sidebar></app-admin-sidebar>
+   </div> -->
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <div class="main-content">
+               <div class="topbar">
+                  <div class="title">
+                     <a href="javascript:void(0)" class="pointer" routerLink="/organization/organizations-list">
+                     <img class="back-arrow" src="{{env.SITE_IMAGE_URL}}left-arrow-black.svg" alt="img">
+                     </a>
+                     Edit Organization
+                  </div>
+               </div>
+               <div class="form-container mt-4">
+                  <form [formGroup]="editOrganizationForm">
+                     <div class="row g-3">
+                        <!-- ORGANIZATION NAME-->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="organization_name" class="form-label">{{TextSetting.FORM.ORGANIZATION_NAME}}</label>
+                              <input type="text" formControlName="organization_name" id="organization_name" class="form-control" placeholder="{{TextSetting.FORM.ENTER_ORGANIZATION}}">
+                              <control-messages *ngIf="!editOrganizationFormError.organization_name" [name]="TextSetting.FORM.ORGANIZATION_NAME" [control]="editOrganizationForm.controls['organization_name']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.organization_name!=''" class="error-block-form">{{ editOrganizationFormError.organization_name }}</div>
+                           </div>
+                        </div>
+                        <!-- PARENT ORGANIZATION-->
+                        <div class="col-md-6 d-flex align-items-center justify-content-between">
+                           <div class="form-group w-100 me-3">
+                              <label for="role" class="form-label">{{TextSetting.FORM.PARENT_ORGANIZATION}}</label>
+                              <ng-select 
+                              [items]="organizationData"
+                              bindLabel="organization_name"
+                              bindValue="_id"
+                              placeholder="{{TextSetting.FORM.SELECT_PARENT_ORGANIZATION}}"
+                              formControlName="parent_organization"
+                              [clearable]="false"
+                              appendTo="ng-select"
+                              appearance="outline">
+                              </ng-select>
+                              <control-messages *ngIf="!editOrganizationFormError.parent_organization" [name]="TextSetting.FORM.PARENT_ORGANIZATION" [control]="editOrganizationForm.controls['parent_organization']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.parent_organization!=''" class="error-block-form">{{ editOrganizationFormError.parent_organization }}</div>
+                           </div>
+                        </div>
+                        <!-- PHONE-->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="phone" class="form-label">{{TextSetting.FORM.PHONE_NUMBER}}</label>
+                              <input type="tel" id="phone" class="form-control"  formControlName="phone" placeholder="{{TextSetting.FORM.ENTER_PHONE_NUMBER}}">
+                              <control-messages *ngIf="!editOrganizationFormError.phone" [name]="TextSetting.FORM.PHONE_NUMBER" [control]="editOrganizationForm.controls['phone']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.phone!=''" class="error-block-form">{{ editOrganizationFormError.phone }}</div>
+                           </div>
+                        </div>
+                        <!-- EMAIL-->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="email" class="form-label">{{TextSetting.FORM.EMAIL}}</label>
+                              <input type="email" id="email" formControlName="email" class="form-control" placeholder="{{TextSetting.FORM.EMAIL_PLACEHOLDER}}">
+                              <control-messages *ngIf="!editOrganizationFormError.email" [name]="TextSetting.FORM.EMAIL" [control]="editOrganizationForm.controls['email']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.email!=''" class="error-block-form">{{ editOrganizationFormError.email }}</div>
+                           </div>
+                        </div>
+                        <!-- STREET -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="street" class="form-label">{{TextSetting.FORM.STREET}}</label>
+                              <input type="text" id="street" formControlName="street" class="form-control" placeholder="{{TextSetting.FORM.ENTER_STREET}}">
+                              <control-messages *ngIf="!editOrganizationFormError.street" [name]="TextSetting.FORM.STREET" [control]="editOrganizationForm.controls['street']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.street!=''" class="error-block-form">{{ editOrganizationFormError.street }}</div>
+                           </div>
+                        </div>
+                        <!-- CITY -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="city" class="form-label">{{TextSetting.FORM.CITY}}</label>
+                              <input type="text" id="city" formControlName="city" class="form-control" placeholder="{{TextSetting.FORM.ENTER_CITY}}">
+                              <control-messages *ngIf="!editOrganizationFormError.city" [name]="TextSetting.FORM.CITY" [control]="editOrganizationForm.controls['city']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.city!=''" class="error-block-form">{{ editOrganizationFormError.city }}</div>
+                           </div>
+                        </div>
+                        <!-- STATE -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="state" class="form-label">{{TextSetting.FORM.STATE}}</label>
+                              <input type="text" id="state" formControlName="state" class="form-control" placeholder="{{TextSetting.FORM.ENTER_STATE}}">
+                              <control-messages *ngIf="!editOrganizationFormError.state" [name]="TextSetting.FORM.STATE" [control]="editOrganizationForm.controls['state']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.state!=''" class="error-block-form">{{ editOrganizationFormError.state }}</div>
+                           </div>
+                        </div>
+                        <!-- COUNTRY -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="country" class="form-label">{{TextSetting.FORM.COUNTRY}}</label>
+                              <input type="text" id="country" formControlName="country" class="form-control" placeholder="{{TextSetting.FORM.ENTER_COUNTRY}}">
+                              <control-messages *ngIf="!editOrganizationFormError.country" [name]="TextSetting.FORM.COUNTRY" [control]="editOrganizationForm.controls['country']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.country!=''" class="error-block-form">{{ editOrganizationFormError.country }}</div>
+                           </div>
+                        </div>
+                        <!-- ZIP CODE -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="zip_code" class="form-label">{{TextSetting.FORM.ZIP_CODE}}</label>
+                              <input type="text" id="zip_code" formControlName="zip_code" class="form-control" placeholder="{{TextSetting.FORM.ENTER_ZIP_CODE}}">
+                              <control-messages *ngIf="!editOrganizationFormError.zip_code" [name]="TextSetting.FORM.ZIP_CODE" [control]="editOrganizationForm.controls['zip_code']"></control-messages>
+                              <div *ngIf="editOrganizationFormError.zip_code!=''" class="error-block-form">{{ editOrganizationFormError.zip_code }}</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <button type="submit" (click)="onEditOrganizationSubmit()" class="btn btn-primary mt-2">
+                           <i class="fas fa-save me-2"></i> Submit
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+<app-loading *ngIf="progress"></app-loading>

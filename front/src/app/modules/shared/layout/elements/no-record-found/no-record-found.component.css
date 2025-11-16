@@ -1,0 +1,44 @@
+.no-record-found{min-height:75vh; display:flex; flex-wrap:wrap; justify-content:center; align-content:center; text-align:center;}
+.no-record-found figure{display:block; width:100%; filter:grayscale(1); opacity:0.3;}
+.no-record-found p{margin:20px 0px 0px 0px; font-size:22px; color:#ffffff;}
+.no-record-found p {
+    margin: 20px 0px 0px 0px;
+    font-size: 22px;
+    color: #c2c2c2;
+}
+.lead-table .table-responsive .no-record-found{min-height:40vh;}
+
+.no-record-found{ display:block;padding-top:60px;}
+.no-record-found figure {filter: inherit;  opacity: 1; margin-bottom:15px;}
+.no-record-found figure img {max-width: 120px;}
+.no-record-found h1{ display:block; text-align:center; font-size:28px;font-family: 'axiformabold'; color:#343434;}
+.no-record-found p{ display:block; text-align:center; margin-top:0;font-size:18px; color:#818181;}
+
+.no-record-found {height: 100%;min-height: auto;}
+
+.no-record-found {min-height: 50vh;padding-top: 0px; display: flex; align-items: center; min-height: 50vh;}
+
+#pick-winner-popup .no-record-found{min-height: 83vh;}
+
+#reward-detail-popup .no-record-found {min-height: 100vh !important;align-content: center;}
+
+
+@media (min-width:1200px) and (max-width:1600px){
+.no-record-found h1 {font-size: 21px;line-height: 28px;}
+
+
+}
+
+
+@media (min-width:768px) and (max-width:991px){
+.no-record-found {min-height: 70vh;}
+
+
+}   
+
+
+@media(max-width:767px){
+.no-record-found{min-height: 70vh;padding-top: 80px;}
+
+
+}

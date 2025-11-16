@@ -1,0 +1,147 @@
+<div id="layoutSidenav">
+   <!-- <div id="layoutSidenav_nav">
+      <app-admin-sidebar></app-admin-sidebar>
+   </div> -->
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <div class="main-content">
+               <div class="d-flex justify-content-between align-items-center mb-3">
+                  <!-- <h4 class="mb-0">User Management</h4> -->
+                  <div class="topbar">
+                     <div class="title">Organizations</div>
+                     <button class="btn btn-primary add-user-btn" routerLink="/organization/add-organization">
+                     <i class="fas fa-user-plus me-2"></i> Add Organization
+                     </button>  
+                  </div>
+               </div>
+               <!-- Accordion Search Filter -->
+               <div class="card mb-3">
+                  <div class="card-header bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#orgSearch" style="cursor: pointer;">
+                     <i class="fas fa-filter me-2"></i> Search Filters
+                  </div>
+                  <div id="orgSearch" class="collapse">
+                     <div class="card-body">
+                        <div class="row g-3">
+                           <div class="col-md-4">
+                              <label class="form-label">Organization</label>
+                              <input type="text" [(ngModel)]="searchFilters.search_organization_name" class="form-control" placeholder="Search by Organization">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Parent</label>
+                              <ng-select
+                              [items]="organizationData"
+                              bindLabel="organization_name"
+                              bindValue="_id"
+                              placeholder="{{TextSetting.FORM.SELECT_PARENT_ORGANIZATION}}"
+                              [clearable]="true"
+                              appendTo="body"  
+                              [(ngModel)]="searchFilters.search_parent_organization"
+                              [ngModelOptions]="{standalone: true}"
+                              name="search_parent_organization">
+                              </ng-select>
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Phone</label>
+                              <input type="text"     [(ngModel)]="searchFilters.search_phone" class="form-control" placeholder="Search by Phone">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Email</label>
+                              <input type="text" [(ngModel)]="searchFilters.search_email" class="form-control" placeholder="Search by Email">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Zip</label>
+                              <input type="text" class="form-control"  [(ngModel)]="searchFilters.search_zip_code" placeholder="Search by Zip">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Street</label>
+                              <input type="text" class="form-control" [(ngModel)]="searchFilters.search_street" placeholder="Search by Street">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">City</label>
+                              <input type="text" class="form-control" [(ngModel)]="searchFilters.search_city" placeholder="Search by City">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">State</label>
+                              <input type="text" class="form-control" [(ngModel)]="searchFilters.search_state" placeholder="Search by State">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Country</label>
+                              <input type="text" class="form-control"  [(ngModel)]="searchFilters.search_country" placeholder="Search by Country">
+                           </div>
+                        </div>
+                        <div class="mt-3">
+                           <button class="btn btn-success me-2" (click)="getOrganizationListData('search');">Search</button>
+                           <button class="btn btn-secondary" (click)="resetFilters();">Reset</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- User List Table -->
+               <div class="table-responsive">
+                  <ng-container *ngIf="!dataloading">
+                     <ng-container *ngIf="organizationLists != undefined && organizationLists != null && organizationLists != '' && organizationLists.length >0; else nolistData">
+                        <table class="table table-bordered table-hover user-table">
+                           <thead class="table-light">
+                              <tr>
+                                 <th>Organization </th>
+                                 <th>Parent </th>
+                                 <th>Phone</th>
+                                 <th>Email</th>
+                                 <th>Zip</th>
+                                 <th>Street</th>
+                                 <th>City</th>
+                                 <th>State</th>
+                                 <th>Country</th>
+                                 <th>Created</th>
+                                 <th>Actions</th>
+                              </tr>
+                           </thead>
+                           <tbody class="scroll-container">
+                              <tr *ngFor="let orgs of organizationLists  | paginate : {
+                                 itemsPerPage : recordLimit,
+                                 currentPage  : page,
+                                 totalItems   : total_record
+                                 }; let i = index;">
+                                 <td>{{orgs.organization_name && orgs.organization_name!=='' ? orgs.organization_name : 'N/A' }}</td>
+                                 <td>{{orgs.parent_name && orgs.parent_name!=='' ? orgs.parent_name : 'N/A' }}</td>
+                                 <td>{{orgs.phone && orgs.phone!=='' ? orgs.phone : 'N/A'}}</td>
+                                 <td>{{orgs.email && orgs.email!=='' ? orgs.email : 'N/A'}}</td>
+                                 <td>{{orgs.zip_code && orgs.zip_code!=='' ? orgs.zip_code : 'N/A'}}</td>
+                                 <td>{{orgs.street && orgs.street!=='' ? orgs.street : 'N/A'}}</td>
+                                 <td>{{orgs.city && orgs.city!=='' ? orgs.city : 'N/A'}}</td>
+                                 <td>{{orgs.state && orgs.state!=='' ? orgs.state : 'N/A'}}</td>
+                                 <td>{{orgs.country && orgs.country!=='' ? orgs.country : 'N/A'}}</td>
+                                 <td>{{orgs.created && orgs.created!=='' ? (orgs.created | date: env.DISPLAY_FORMAT_DATE) : '-'}}</td>
+                                 <td>
+                                    <a href="javascript:void(0)" routerLink="/organization/edit-organization/{{orgs.slug}}" class="pointer">
+                                    <img src="{{env.SITE_IMAGE_URL}}edit-icon.svg">
+                                    </a>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center">
+                           <pagination-controls  [autoHide]="true"  [autoHide]="true"  previousLabel="Prev" nextLabel="Next" (pageChange)="onPageChange($event)">
+                           </pagination-controls>
+                        </div>
+                     </ng-container>
+                     <ng-template #nolistData>
+                        <!--NO RECORD COMPONENT SELECTOR CALLS-->
+                        <app-no-record-found>
+                        </app-no-record-found>
+                        <!--NO RECORD COMPONENT SELECTOR CALLS-->
+                     </ng-template>
+                  </ng-container>
+                  <ng-container *ngIf="dataloading">
+                     <!--LOADING COMPONENT SELECTOR CALLS-->
+                     <app-loading>
+                     </app-loading>
+                     <!--LOADING COMPONENT SELECTOR CALLS-->
+                  </ng-container>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>

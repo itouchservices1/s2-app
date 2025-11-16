@@ -1,0 +1,44 @@
+<div class="login-container" *ngIf="!dataloading">
+   <div class="login-box">
+         <!-- <div class="back-to-home">
+         <a class="home-anchor pointer" routerLink="/"><i class="fa fa-home" title="home"></i></a>
+      </div> -->
+      <div class="logo-wrapper">
+         <img src="{{env.SITE_IMAGE_URL}}survey-logo.png" alt="ISAS Logo" class="isas-logo" />
+       </div>
+      <h2 class="text-center"> LOGIN</h2>
+      <form [formGroup]="loginForm">
+         <div class="form-group">
+            <label>{{TextSetting.FORM.LOGIN_EMAIL_PLACEHOLDER}}
+            <span class="required">*</span>
+            </label>
+            <input type="text"  class="form-control" placeholder="{{TextSetting.FORM.LOGIN_EMAIL_PLACEHOLDER}}" formControlName="email">
+            <control-messages *ngIf="!loginFormError.email" [name]="TextSetting.FORM.EMAIL" [control]="loginForm.controls['email']">
+            </control-messages>
+            <div *ngIf="loginFormError.email!=''" class="error-block-form">{{ loginFormError.email }}</div>
+         </div>
+         <div class="form-group">
+            <label>Password
+            <span class="required">*</span>
+            </label>
+            <div class="password-input-wrapper">
+               <input type="password" name="password"  class="form-control" placeholder="{{TextSetting.FORM.PASSWORD_PLACEHOLDER}}" formControlName="password" ShowHidePasswordDirective>
+            </div>
+            <control-messages *ngIf="!loginFormError.password" [name]="TextSetting.FORM.PASSWORD" [control]="loginForm.controls['password']">
+            </control-messages>
+            <div *ngIf="loginFormError.password!=''" class="error-block-form">{{ loginFormError.password }}</div>
+         </div>
+         <div class="bottom-group login-button-group">
+            <button class="btn btn-primary ripple-button"  (click)="onAdminLoginSubmit();">{{TextSetting.FORM.LOGIN_BTN}}
+            </button>
+
+             
+            <!-- <div class="signup-container">
+               <span class="signup-text">New to ISAS Portal?</span>
+               <a routerLink="/general/signup" class="btn btn-signup">Sign Up</a>
+            </div> -->
+         </div>
+      </form>
+   </div>
+</div>
+<app-loading *ngIf="progress"></app-loading>

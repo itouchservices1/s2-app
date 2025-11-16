@@ -1,0 +1,33 @@
+
+    <app-loading *ngIf="dataloading"> </app-loading>
+
+
+
+
+    <div class="popup-overlay">
+  <div class="popup-box">
+    <div class="popup-header">
+      <span>Survey Sight</span>
+      <button class="close-btn" (click)="closePopup()">×</button>
+    </div>
+
+    <div class="popup-body">
+      <label class="form-label">Select Survey</label>
+
+      <ng-container *ngIf="supersetResponseFlag && metabaseResponseFlag && supersetMetabaseMergedData && supersetMetabaseMergedData.length">
+          <ng-select
+            [items]="supersetMetabaseMergedData"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Visualize…"
+            [clearable]="false"
+            [(ngModel)]="selectedId"
+            [groupBy]="'category'"
+            (change)="onSelectionChange($event)">
+          </ng-select>
+        </ng-container>
+
+      <button class="submit-btn" (click)="submitSurvey()">Submit</button>
+    </div>
+  </div>
+</div>

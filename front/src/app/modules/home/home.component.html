@@ -1,0 +1,21 @@
+
+<ng-container *ngIf="isBrowser">
+  <div class="home-container">
+
+<div class="home-container"></div>
+
+  <!-- Centered Message -->
+  <div  class="center-message">
+    <h2>Welcome to Survey Sight</h2>
+    <p>Please click below to open the popup and select a survey to visualize your data.</p>
+    <button class="open-btn" (click)="openSurveyPopup();">Click here</button>
+  </div>
+</div>
+  <!-- Popup -->
+<app-survey-popup *ngIf="showPopup" (CloseModalBooleanValue)="closeSurveyPopup($event)"></app-survey-popup>
+
+
+</ng-container>
+
+
+

@@ -1,0 +1,22 @@
+.navbar {
+  /* background: #94DCDD !important; */
+  background: #13A8AB !important;
+  border: 1px solid #014D4E;
+}
+.sb-topnav .navbar-brand {
+  width: auto;
+}
+.fas{
+  color: #014D4E;
+}
+.dropdown-toggle::after {
+  color: #014D4E;
+}
+.navbar-brand img {
+  height: 40px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+.navbar-nav .dropdown-menu.show .dropdown-item{
+  color: #014D4E;
+}

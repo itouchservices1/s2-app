@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  env-updater:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: node updateEnv.js
+  backend:
+    build:
+      context: ./nodejs
+    ports:
+      - "8001:8001"
+    volumes:
+      - /home/isas/nbs/data/:/app/public/uploads
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/survey
+    restart: always
+
+  frontend:
+    build:
+      context: ./front
+    ports:
+      - "4000:4000"
+    depends_on:
+      - backend
+    restart: always
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+volumes:
+  mongo_data:

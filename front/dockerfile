@@ -1,0 +1,21 @@
+# Use latest Node 22 image
+FROM node:22
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependencies and install
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+# Copy full source and build the app
+COPY . .
+
+# Build Angular project
+RUN npm run build
+
+# Expose SSR server port
+EXPOSE 4000
+
+# Run the Angular SSR server
+CMD ["node", "dist/front/server/server.mjs"]

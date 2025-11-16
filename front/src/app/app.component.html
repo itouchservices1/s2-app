@@ -1,0 +1,8 @@
+
+<!--LOAD CONTENT TEMPLATE ACCORDING TO ROUTE CONDITION-->
+<app-header *ngIf="!router.url.includes('/login') && router.url !== '/'"></app-header>
+
+<router-outlet (activate)="onActivate()" #outlet></router-outlet>
+
+<app-footer *ngIf="!router.url.includes('/login') && router.url !== '/'"></app-footer>
+<!--LOAD CONTENT TEMPLATE ACCORDING TO ROUTE CONDITION-->

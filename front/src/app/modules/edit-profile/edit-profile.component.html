@@ -1,0 +1,79 @@
+<div id="layoutSidenav">
+   <!-- <div id="layoutSidenav_nav">
+      <app-department-admin-sidebar></app-department-admin-sidebar>
+   </div> -->
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <!-- Main Content Area -->
+            <div class="main-content">
+               <div class="topbar">
+                  <div class="title">
+                     <!-- <a href="javascript:void(0)" class="pointer" routerLink="/organization/dashboard">
+                     <img class="back-arrow" src="{{env.SITE_IMAGE_URL}}left-arrow-black.svg" alt="img">
+                     </a> -->
+                     Edit Profile
+                  </div>
+               </div>
+               <div class="form-container mt-4">
+                  <form [formGroup]="editProfileForm">
+                     <div class="row g-3">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="firstName" class="form-label">{{TextSetting.FORM.FIRST_NAME}}</label>
+                              <input type="text" formControlName="first_name" id="firstName" class="form-control" placeholder="{{TextSetting.FORM.ENTER_FIRST_NAME}}">
+                              <control-messages *ngIf="!editProfileFormError.first_name" [name]="TextSetting.FORM.FIRST_NAME" [control]="editProfileForm.controls['first_name']"></control-messages>
+                              <div *ngIf="editProfileFormError.first_name!=''" class="error-block-form">{{ editProfileFormError.first_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="lastName" class="form-label">{{TextSetting.FORM.LAST_NAME}}</label>
+                              <input type="text" id="lastName" formControlName="last_name" class="form-control" placeholder="{{TextSetting.FORM.ENTER_LAST_NAME}}">
+                              <control-messages *ngIf="!editProfileFormError.last_name" [name]="TextSetting.FORM.LAST_NAME" [control]="editProfileForm.controls['last_name']"></control-messages>
+                              <div *ngIf="editProfileFormError.last_name!=''" class="error-block-form">{{ editProfileFormError.last_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="email" class="form-label">{{TextSetting.FORM.EMAIL}}</label>
+                              <input type="email" id="emaildepartment" formControlName="email" class="form-control" placeholder="{{TextSetting.FORM.EMAIL_PLACEHOLDER}}">
+                              <control-messages *ngIf="!editProfileFormError.email" [name]="TextSetting.FORM.EMAIL" [control]="editProfileForm.controls['email']"></control-messages>
+                              <div *ngIf="editProfileFormError.email!=''" class="error-block-form">{{ editProfileFormError.email }}</div>
+                           </div>
+                        </div>
+                        <!-- Username -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="username" class="form-label">{{TextSetting.FORM.USER_NAME}}</label>
+                              <input type="text" id="username" formControlName="username" class="form-control" placeholder="{{TextSetting.FORM.USER_NAME}}">
+                              <control-messages *ngIf="!editProfileFormError.username" [name]="TextSetting.FORM.USER_NAME" [control]="editProfileForm.controls['username']"></control-messages>
+                              <div *ngIf="editProfileFormError.username!=''" class="error-block-form">{{ editProfileFormError.username }}</div>
+                           </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="phone" class="form-label">{{TextSetting.FORM.PHONE_NUMBER}}</label>
+                              <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="{{TextSetting.FORM.ENTER_PHONE_NUMBER}}">
+                              <control-messages *ngIf="!editProfileFormError.phone" [name]="TextSetting.FORM.PHONE_NUMBER" [control]="editProfileForm.controls['phone']"></control-messages>
+                              <div *ngIf="editProfileFormError.phone!=''" class="error-block-form">{{ editProfileFormError.phone }}</div>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+                  <div class="form-group">
+                     <button type="submit" (click)="updateAdminProfile()" class="btn btn-primary mt-2">
+                     <i class="fas fa-save me-2"></i> Submit
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+<app-loading *ngIf="progress"></app-loading>

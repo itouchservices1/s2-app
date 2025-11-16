@@ -1,0 +1,160 @@
+/* Main layout container */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+.layout-container {
+    display: flex;
+  }
+  
+  /* Sidebar */
+  app-admin-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+  
+  /* Main content */
+  .main-content {
+    flex-grow: 1;
+    padding-top: 10px;
+    min-height: 100vh;
+  }
+  
+  /* Topbar styles */
+  .topbar {
+    width: 100%;
+
+    /* background: #E4E9F7; */
+    padding: 5px 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+    /* border-radius: 5px; */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+
+  }
+  
+  /* Title styling */
+  .topbar .title {
+
+    font-size: 30px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  /* Add User Button */
+  .add-user-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    /* background: linear-gradient(135deg, #4CAF50, #81C784); */
+    background: #13A8AB;
+  }
+  .add-user-btn:hover {
+    background: #014d4e;
+  }
+  
+  /* Card (accordion) */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 16px;
+  /* background: #4CAF50 !important; */
+  background: #13A8AB !important;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-header:hover {
+  background: #1a252f;
+}
+
+/* Accordion body */
+.card-body {
+  background: #fff;
+  padding: 20px;
+}
+
+/* Labels & Inputs */
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.3);
+}
+
+/* Buttons */
+.btn {
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 6px;
+}
+
+.btn-success {
+  background-color: #13A8AB;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #014d4e;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Table */
+.user-table {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.user-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+}
+
+.user-table td {
+  vertical-align: middle;
+}
+
+/* Pagination */
+.pagination {
+  margin: 10px 0;
+}
+
+:host ::ng-deep .ng-select .ng-select-container .ng-placeholder {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+

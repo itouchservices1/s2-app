@@ -1,0 +1,53 @@
+<div id="layoutSidenav">
+
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <!-- Main Content -->
+            <div class="content">
+
+               <!-- Fullscreen Button Bar -->
+               <div class="btnToggleDashboardFullScreenContainer">
+                  <!-- Timer Display -->
+                  <span class="fullscreen-timer-display" *ngIf="isFullscreen">
+                     {{ timerDisplay }}
+                  </span>
+                  <button (click)="toggleFullscreen()" class="btnToggleDashboardFullScreen"
+                     title="Toggle Fullscreen Mode">
+                     <ng-container *ngIf="!isFullscreen">
+                        <i class="fas fa-expand mr-2"></i> Go Fullscreen
+                     </ng-container>
+                     <ng-container *ngIf="isFullscreen">
+                        <i class="fas fa-compress mr-2"></i> Exit Fullscreen
+                     </ng-container>
+                  </button>
+               </div>
+               <!-- <app-meta-dropdowns></app-meta-dropdowns> -->
+               <br /><br />
+               <ng-container *ngIf="dashboardType==env.SUPERSET_ROUTE">
+                  <p class="text-sm">{{ errorMessage }}</p>
+                  <div #dashboardContainer id="dashboard-container" class="iframe-container"></div>
+               </ng-container>
+               <ng-container *ngIf="dashboardType==env.METABASE_ROUTE">
+                  <ng-container
+                     *ngIf="dashboardType==env.METABASE_ROUTE && metaData!==undefined && metaData.result!=='';else NoRecord">
+                     <div class="main-section">
+                        <div class="tab-content">
+                           <div class="general-meta-dashboard">
+                              <iframe [src]="metaData.result | safeUrl" width="100%" height="4000px" frameborder="0"
+                                 allowfullscreen></iframe>
+                           </div>
+                        </div>
+                     </div>
+                  </ng-container>
+                  <ng-template #NoRecord>
+                     <app-no-record-found>
+                     </app-no-record-found>
+                  </ng-template>
+               </ng-container>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+<app-loading *ngIf="dataloading"></app-loading>
