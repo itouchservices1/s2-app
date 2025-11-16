@@ -26,7 +26,7 @@ export const TextSetting = {
     VIEW_FILE_LIST_TITLE                : "View File List Detail",
     CONTACT_US_TITLE                    : "Contact Us",
     CONTACT_LISTING_TITLE               : "Contacts Listing",
-    ISAS_NG_TITLE                       : "Survey NG",
+    ISAS_NG_TITLE                       : "ISAS NG",
     GENERATE_BI_DASHBOARD               : "Generate BI Charts",
     ADD_BI_DASHBOARD                    : "Add BI Charts",
     CUSTOM_BI_DASHBOARD_TITLE           : 'Custom BI Dashboard',

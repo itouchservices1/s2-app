@@ -21,13 +21,19 @@
 
             <li><a class="dropdown-item" routerLink="/edit-profile" href="javascript:void(0)">Edit Profile</a></li>
             <li><a class="dropdown-item" routerLink="/change-password" href="javascript:void(0)">Change Password</a></li>
+            <ng-container *ngIf="userData && userData.user_type!==env.ROLE_STANDARD">
+               <li>
+                  <hr class="dropdown-divider" />
+               </li>
+               <li> 
+                  <a class="dropdown-item"   routerLink="/users/users-list"  href="javascript:void(0)">Users</a>             
+               </li>
+               <li> 
+                  <a class="dropdown-item"   routerLink="/organization/organizations-list"  href="javascript:void(0)">Organizations</a>             
+               </li>
+            </ng-container>
             <li>
                <hr class="dropdown-divider" />
-            </li>
-            <li> 
-               <a class="dropdown-item"   routerLink="/organization/organizations-list"  href="javascript:void(0)">Organizations</a>
-
-             
             </li>
             <li><a class="dropdown-item" href="javascript:void(0)" appLogout>Logout</a></li>
          </ul>

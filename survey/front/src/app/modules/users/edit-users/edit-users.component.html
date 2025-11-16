@@ -1,0 +1,135 @@
+<div id="layoutSidenav">
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <!-- Main Content Area -->
+            <div class="main-content">
+               <div class="topbar">
+                  <div class="title">
+                     <a href="javascript:void(0)" class="pointer" routerLink="/users/users-list">
+                     <img class="back-arrow" src="{{env.SITE_IMAGE_URL}}left-arrow-black.svg" alt="img">
+                     </a>
+                     Edit User
+                  </div>
+               </div>
+               <div class="form-container mt-4">
+                  <form [formGroup]="editUserForm">
+                     <div class="row g-3">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="firstName" class="form-label">{{TextSetting.FORM.FIRST_NAME}}</label>
+                              <input type="text" formControlName="first_name" id="firstName" class="form-control" placeholder="{{TextSetting.FORM.ENTER_FIRST_NAME}}">
+                              <control-messages *ngIf="!editUserFormError.first_name" [name]="TextSetting.FORM.FIRST_NAME" [control]="editUserForm.controls['first_name']"></control-messages>
+                              <div *ngIf="editUserFormError.first_name!=''" class="error-block-form">{{ editUserFormError.first_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="lastName" class="form-label">{{TextSetting.FORM.LAST_NAME}}</label>
+                              <input type="text" id="lastName" formControlName="last_name" class="form-control" placeholder="{{TextSetting.FORM.ENTER_LAST_NAME}}">
+                              <control-messages *ngIf="!editUserFormError.last_name" [name]="TextSetting.FORM.LAST_NAME" [control]="editUserForm.controls['last_name']"></control-messages>
+                              <div *ngIf="editUserFormError.last_name!=''" class="error-block-form">{{ editUserFormError.last_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="email" class="form-label">{{TextSetting.FORM.EMAIL}}</label>
+                              <input type="email" id="emaildepartment" formControlName="email" class="form-control" placeholder="{{TextSetting.FORM.EMAIL_PLACEHOLDER}}">
+                              <control-messages *ngIf="!editUserFormError.email" [name]="TextSetting.FORM.EMAIL" [control]="editUserForm.controls['email']"></control-messages>
+                              <div *ngIf="editUserFormError.email!=''" class="error-block-form">{{ editUserFormError.email }}</div>
+                           </div>
+                        </div>
+                        <!-- Username -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="username" class="form-label">{{TextSetting.FORM.USER_NAME}}</label>
+                              <input type="text" id="username" formControlName="username" class="form-control" placeholder="{{TextSetting.FORM.USER_NAME}}">
+                              <control-messages *ngIf="!editUserFormError.username" [name]="TextSetting.FORM.USER_NAME" [control]="editUserForm.controls['username']"></control-messages>
+                              <div *ngIf="editUserFormError.username!=''" class="error-block-form">{{ editUserFormError.username }}</div>
+                           </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="phone" class="form-label">{{TextSetting.FORM.PHONE_NUMBER}}</label>
+                              <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="{{TextSetting.FORM.ENTER_PHONE_NUMBER}}">
+                              <control-messages *ngIf="!editUserFormError.phone" [name]="TextSetting.FORM.PHONE_NUMBER" [control]="editUserForm.controls['phone']"></control-messages>
+                              <div *ngIf="editUserFormError.phone!=''" class="error-block-form">{{ editUserFormError.phone }}</div>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="form-label d-block">{{TextSetting.FORM.ROLE}}</label>
+                              <div class="form-check form-check-inline" *ngFor="let roles of usersRoleData; let j=index">
+                                 <input class="form-check-input" (change)="onRoleChange($event)" type="radio" id="role_{{j}}" formControlName="role" value="{{roles.type}}">
+                                 <label class="form-check-label" for="role_{{j}}">{{roles.name}}</label>
+                              </div>
+                              <control-messages *ngIf="!editUserFormError.role" [name]="TextSetting.FORM.ROLE" [control]="editUserForm.controls['role']"></control-messages>
+                              <div *ngIf="editUserFormError.role!=''" class="error-block-form">{{ editUserFormError.role }}</div>
+                           </div>
+                        </div>
+                        <!-- Role + Submit Button in Same Row -->
+                        <div class="col-md-12 d-flex align-items-center justify-content-between">
+                           <div class="form-group w-100 me-3">
+                              <label for="role" class="form-label">{{TextSetting.FORM.ORGANIZATION_LIST}}</label>
+                              <ng-select 
+                              [items]="organizationData"
+                              bindLabel="organization_name"
+                              bindValue="_id"
+                              placeholder="{{TextSetting.FORM.SELECT_ORGANIZATION}}"
+                              formControlName="organization_ids"
+                              [clearable]="false"
+                              appendTo="ng-select"
+                              appearance="outline">
+                              </ng-select>
+                              <control-messages *ngIf="!editUserFormError.organization_ids" [name]="TextSetting.FORM.ORGANIZATION" [control]="editUserForm.controls['organization_ids']"></control-messages>
+                              <div *ngIf="editUserFormError.organization_ids!=''" class="error-block-form">{{ editUserFormError.organization_ids }}</div>
+                           </div>
+                        </div>
+                        <div class="col-12">
+                           <div class="info-alert">
+                              <img src="assets/images/info-alert.png" alt="Info" class="info-icon me-2">
+                              Please leave password blank if you don’t want to change your password.
+                           </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="col-md-6">
+                           <div class="form-group strong-password">
+                              <label for="password" class="form-label">{{TextSetting.FORM.PASSWORD}}</label>
+                              <div class="password-input-wrapper">
+                                 <input type="password" id="password" ShowHidePasswordDirective class="form-control" formControlName="password" placeholder="{{TextSetting.FORM.PASSWORD_PLACEHOLDER}}">
+                              </div>
+                              <control-messages *ngIf="!editUserFormError.password" [name]="TextSetting.FORM.PASSWORD" [control]="editUserForm.controls['password']"></control-messages>
+                              <div *ngIf="editUserFormError.password!=''" class="error-block-form">{{ editUserFormError.password }}</div>
+                              <!-- Password Strength -->
+                              <app-password-strength [passwordToCheck]="editUserForm.value.password" (passwordStrength)="passwordValid($event)"></app-password-strength>
+                           </div>
+                        </div>
+                        <!--Confirm Password---->
+                        <div class="col-md-6">
+                           <div class="form-group strong-password">
+                              <label for="password" class="form-label">{{TextSetting.FORM.CONFIRM_PASSWORD}}</label>
+                              <div class="password-input-wrapper">
+                                 <input type="password" id="confirm_password" class="form-control" ShowHidePasswordDirective formControlName="confirm_password" placeholder="{{TextSetting.FORM.ENTER_CONFIRM_PASSWORD}}">
+                              </div>
+                              <control-messages *ngIf="!editUserFormError.confirm_password" [name]="TextSetting.FORM.CONFIRM_PASSWORD" [control]="editUserForm.controls['confirm_password']"></control-messages>
+                              <div *ngIf="editUserFormError.confirm_password!=''" class="error-block-form">{{ editUserFormError.confirm_password }}</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <button type="submit" (click)="updateSuperAdminDepartment()" class="btn btn-primary mt-2">
+                           <i class="fas fa-save me-2"></i> Submit
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+<app-loading *ngIf="progress"></app-loading>

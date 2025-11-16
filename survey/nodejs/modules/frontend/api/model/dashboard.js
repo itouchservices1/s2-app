@@ -39,7 +39,7 @@ function Dashboard() {
 
 			let response;
 			try {
-				response = await fetch(`${METABASE_BASE_LIST_URL}/api/dashboard`, {
+				response = await fetch(`${METABASE_BASE_URL}/api/dashboard`, {
 					headers: {
 						'X-API-KEY': METABASE_API_KEY,
 					},
@@ -61,7 +61,7 @@ function Dashboard() {
 				// console.warn(', error);
 
 				// Backup request
-				response = await fetch(`${METABASE_BASE_URL}/api/dashboard`, {
+				response = await fetch(`${METABASE_BASE_LIST_URL}/api/dashboard`, {
 					headers: {
 						'X-API-KEY': METABASE_API_KEY,
 					},
@@ -90,7 +90,7 @@ function Dashboard() {
 
 				if (dashboard.collection_id) {
 					try {
-						const collectionRes = await fetch(`${METABASE_BASE_LIST_URL}/api/collection/${dashboard.collection_id}`, {
+						const collectionRes = await fetch(`${METABASE_BASE_URL}/api/collection/${dashboard.collection_id}`, {
 							headers: {
 								'X-API-KEY': METABASE_API_KEY,
 							},

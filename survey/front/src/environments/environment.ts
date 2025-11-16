@@ -2,13 +2,16 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const API_BASE_URL = '/api/';
-const FRONT_URL = 'https://10.0.0.106';
+
+const API_BASE_URL = 'http://localhost:8001/api/';
+const FRONT_URL = 'http://localhost:4200';
 const SUPERSET_BASE_URL = 'http://10.0.0.234:8088';
 // const ADMIN_URL = 'http://localhost.dev3.gipl.inet:21010';
 
-export const environment = {
-    production                                    : true,
+
+
+ export const environment = {
+    production                                    : false,
     DEBUG_BASE64_DATA                             : true,
     ENCRIPT_API                                   : 0,
     ENCRIPTION_KEY                                : '123456$#@$^@1ERF123456$#@$^@1ERF',
@@ -40,12 +43,13 @@ export const environment = {
     AUTO_LOGOUT_TIME                              : 30,
     DISPLAY_FORMAT_DATE                           : 'MM-dd-yyy',
 	WARNING_AUTO_LOGOUT_COUNTDOWN_TIME            : 30,
-    SUPERSET_BASE_URL                             : SUPERSET_BASE_URL,
-    SUPERSET_ROUTE                                : "s",
+	SUPERSET_BASE_URL                             : SUPERSET_BASE_URL,
+	SUPERSET_ROUTE                                : "s",
 	METABASE_ROUTE                                : "m",
 	WEB_HOOK_URL                                  : "https://apiworkflow-n8n.isas.ai/webhook/2158fadc-8b91-4dcf-a012-c6c3c9045789/chat"
- 
 }
+  
+
 
 /*
  * For easier debugging in development mode, you can import the following file

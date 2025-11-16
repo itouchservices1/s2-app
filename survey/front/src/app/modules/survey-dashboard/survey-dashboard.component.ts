@@ -68,7 +68,6 @@ export class SurveyDashboardComponent implements OnInit, AfterViewInit, OnDestro
 
         setTimeout(() => {
             this.route.params.subscribe((params: any) => {
-
                 if (params['dashboard_type'] !== '' && params['dashboard_type'] != undefined) {
                     this.dashboardType = params['dashboard_type'];
                     this.metaData = undefined;
@@ -119,9 +118,9 @@ export class SurveyDashboardComponent implements OnInit, AfterViewInit, OnDestro
         this.dataloading = true
         let input: any = {};
         input['dashboard_id'] = this.metaDashboardId;
-
+        
         this.commonFunctionService.getMetaDashboardDetails(input, methodName).pipe(takeUntil(this.ngUnsubscribe)).subscribe((response: any) => {
-
+            
             if (response.status === this.env.SUCCESS_STATUS) {
                 this.metaData = response
 
@@ -312,6 +311,7 @@ export class SurveyDashboardComponent implements OnInit, AfterViewInit, OnDestro
     }
 
     private handleTimerFinish(): void {
+        
         
         // Reload dashboard data
         if (this.metaDashboardId) {

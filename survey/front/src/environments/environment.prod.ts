@@ -2,9 +2,9 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const API_BASE_URL = '/api/';
-const FRONT_URL = 'https://10.0.0.106';
-const SUPERSET_BASE_URL = 'http://10.0.0.234:8088';
+const API_BASE_URL = 'http://localhost:8001/api/';
+const FRONT_URL = 'http://localhost:4200';
+const SUPERSET_BASE_URL   = 'http://10.0.0.234:8088/';
 // const ADMIN_URL = 'http://localhost.dev3.gipl.inet:21010';
 
 export const environment = {

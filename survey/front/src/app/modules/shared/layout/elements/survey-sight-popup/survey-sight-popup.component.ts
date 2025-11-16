@@ -88,7 +88,6 @@ export class SurveyPopupComponent implements OnInit, OnDestroy {
     public getMetaBaseDashboard(): void {
         this.dataloading = true
         this.commonFunctionService.getMetaBaseDashboard().pipe(takeUntil(this.ngUnsubscribe)).subscribe((response: any) => {
-            
             if (response.status === this.env.SUCCESS_STATUS) {
                 this.metaData = response.result;
                 this.metaData.map((records: any) => {

@@ -1,0 +1,180 @@
+<div id="layoutSidenav">
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <div class="main-content">
+               <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="topbar">
+                     <div class="title">User Management</div>
+                     <button class="btn btn-primary add-user-btn" routerLink="/users/add-user"><i class="fas fa-user-plus me-2"></i> Add User</button>
+                  </div>
+               </div>
+               <!-- Accordion Filter -->
+               <div class="card mb-3">
+                  <div class="card-header" data-bs-toggle="collapse" data-bs-target="#userFilter" aria-expanded="false">
+                     <i class="fas fa-filter me-2"></i> Search Filters
+                     <span class="float-end"><i class="fas fa-chevron-down"></i></span>
+                  </div>
+                  <div id="userFilter" class="collapse">
+                     <div class="card-body">
+                        <form class="row g-3">
+                           <!-- Name -->
+                           <div class="col-md-4">
+                              <label class="form-label">Search by Name</label>
+                              <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchFilters.search_full_name" placeholder="Search by Name"  name="name">
+                           </div>
+                           <!-- Email -->
+                           <div class="col-md-4">
+                              <label class="form-label">Search by Email</label>
+                              <input type="text" placeholder="Search by Email" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchFilters.search_email" class="form-control"  name="email">
+                           </div>
+                           <div class="col-md-4">
+                              <label class="form-label">Search by Username</label>
+                              <input type="text" placeholder="Search by Username" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchFilters.search_username"  class="form-control"  name="username">
+                           </div>
+                           <div class="col-md-4">
+                              <label  class="form-label">{{TextSetting.FORM.ORGANIZATION_LIST}}</label>
+                              <ng-select 
+                              [items]="organizationData"
+                              bindLabel="organization_name"
+                              [(ngModel)]="searchFilters.search_organization_id"
+                              bindValue="_id"
+                              placeholder="{{TextSetting.FORM.SELECT_ORGANIZATION}}"
+                              [clearable]="false"
+                              [ngModelOptions]="{standalone: true}"
+                              [searchable]="true"
+                              [dropdownPosition]="'auto'"
+                              appendTo="body"  
+                              appearance="outline">
+                              </ng-select>
+                           </div>
+                           <!-- Role Dropdown -->
+                           <div class="col-md-4">
+                              <label class="form-label">Search by Role</label>
+                              <ng-select 
+                              [(ngModel)]="searchFilters.search_role" 
+                              [items]="usersRoleData" 
+                              bindLabel="name" 
+                              bindValue="type" 
+                              [searchable]="true"
+                              appendTo="body"  
+                              [dropdownPosition]="'auto'"
+                              [ngModelOptions]="{standalone: true}"
+                              placeholder="Select Role">
+                              </ng-select>
+                           </div>
+                           <!-- Status Dropdown -->
+                           <div class="col-md-4">
+                              <label class="form-label">Search by Status</label>
+                              <ng-select 
+                              [(ngModel)]="searchFilters.search_active" 
+                              [items]="statusData" 
+                              appendTo="body"  
+                              [ngModelOptions]="{standalone: true}"
+                              [searchable]="true"
+                              [dropdownPosition]="'auto'"
+                              bindLabel="label" 
+                              bindValue="value" 
+                              placeholder="Select Status">
+                              </ng-select>
+                           </div>
+                           <!-- Buttons -->
+                           <div class="mt-3">
+                              <button type="button" class="btn btn-success me-2" (click)="getDepartmentListData('search');">Search</button>
+                              <button type="button" class="btn btn-secondary" (click)="resetFilters();">Reset</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <!-- User List Table -->
+               <div class="table-responsive">
+                  <ng-container *ngIf="!dataloading">
+                     <ng-container *ngIf="departmentLists != undefined && departmentLists != null && departmentLists != '' && departmentLists.length >0; else nolistData">
+                        <table class="table table-bordered table-hover user-table">
+                           <thead class="table-light">
+                              <tr>
+                                 <th>Name</th>
+                                 <th>Email</th>
+                                 <th>Username</th>
+                                 <th>Organization</th>
+                                 <th>Role</th>
+                                 <th>Status</th>
+                                 <th>Created</th>
+                                 <th>Actions</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr
+                                 *ngFor="let deps of departmentLists  | paginate : {
+                                 itemsPerPage : recordLimit,
+                                 currentPage  : page,
+                                 totalItems   : total_record
+                                 }; let i = index;">
+                                 <td>
+                                    {{deps.full_name && deps.full_name!=='' ? deps.full_name : '-'}}
+                                 </td>
+                                 <td>
+                                    {{deps.email && deps.email!=='' ? deps.email : '-'}}
+                                 </td>
+                                 <td>
+                                    {{deps.username && deps.username!=='' ? deps.username : '-'}}
+                                 </td>
+                                 <td>
+                                    {{deps.organization_name && deps.organization_name!=='' ? deps.organization_name : '-'}}
+                                 </td>
+                                 <td>
+                                    {{deps.role && deps.role!=='' ? (deps.role | titlecase) : '-'}}
+                                 </td>
+                                 <td>
+                                    <span class="badge" [ngClass]="deps.is_active == 1 ? 'bg-success' : 'bg-danger'">
+                                    {{ deps.is_active == 1 ? 'Active' : 'Inactive' }}
+                                    </span>
+                                 </td>
+                                 <td>
+                                    {{deps.created && deps.created!=='' ? (deps.created | date: env.DISPLAY_FORMAT_DATE) : '-'}}
+                                 </td>
+                                 <td class="text-center">
+                                    <div class="action-icons">
+                                       <i
+                                       class="fas"
+                                       [class.is_admin]="deps.role==env.ROLE_ADMIN"
+                                       [ngClass]="deps.is_active == 1 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger'"
+                                       style="cursor: pointer; font-size: 18px;"
+                                       title="Change Status"
+                                       (click)="activeDeactiveUser(deps)"></i>
+                                       <!-- Edit icon -->
+                                       <i class="fas fa-pen text-secondary" routerLink="/users/edit-user/{{deps.slug}}" style="cursor: pointer;" title="Edit"></i>
+                                       <!-- Login icon (if applicable) -->
+                                       <!-- <ng-container *ngIf="deps.role==env.ROLE_STANDARD || deps.role==env.ROLE_GENERAL; else loginPlaceholder">
+                                          <i class="fas fa-right-to-bracket text-login-icon" (click)="loginBySuperAdmin(deps)" style="cursor: pointer;" title="Login"></i>
+                                       </ng-container> -->
+                                       <ng-template #loginPlaceholder>
+                                          <span class="placeholder-no-icon"></span>
+                                       </ng-template>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center">
+                           <pagination-controls [autoHide]="true" [autoHide]="true" previousLabel="Prev" nextLabel="Next" (pageChange)="onPageChange($event)"> </pagination-controls>
+                        </div>
+                     </ng-container>
+                     <ng-template #nolistData>
+                        <!--NO RECORD COMPONENT SELECTOR CALLS-->
+                        <app-no-record-found> </app-no-record-found>
+                        <!--NO RECORD COMPONENT SELECTOR CALLS-->
+                     </ng-template>
+                  </ng-container>
+                  <ng-container *ngIf="dataloading">
+                     <!--LOADING COMPONENT SELECTOR CALLS-->
+                     <app-loading> </app-loading>
+                     <!--LOADING COMPONENT SELECTOR CALLS-->
+                  </ng-container>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>

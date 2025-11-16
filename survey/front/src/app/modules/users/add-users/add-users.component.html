@@ -1,0 +1,119 @@
+<div id="layoutSidenav">
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <!-- Main Content Area -->
+            <div class="main-content">
+               <div class="topbar">
+                  <div class="title">
+                     <a href="javascript:void(0)" class="pointer" routerLink="/users/users-list">
+                     <img class="back-arrow" src="{{env.SITE_IMAGE_URL}}left-arrow-black.svg" alt="img">
+                     </a>
+                     Add User
+                  </div>
+               </div>
+               <div class="form-container mt-4">
+                  <form [formGroup]="addUserForm">
+                     <div class="row g-3">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="firstName" class="form-label">{{TextSetting.FORM.FIRST_NAME}}</label>
+                              <input type="text" formControlName="first_name" id="firstName" class="form-control" placeholder="{{TextSetting.FORM.ENTER_FIRST_NAME}}">
+                              <control-messages *ngIf="!addUserFormError.first_name" [name]="TextSetting.FORM.FIRST_NAME" [control]="addUserForm.controls['first_name']"></control-messages>
+                              <div *ngIf="addUserFormError.first_name!=''" class="error-block-form">{{ addUserFormError.first_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="lastName" class="form-label">{{TextSetting.FORM.LAST_NAME}}</label>
+                              <input type="text" id="lastName" formControlName="last_name" class="form-control" placeholder="{{TextSetting.FORM.ENTER_LAST_NAME}}">
+                              <control-messages *ngIf="!addUserFormError.last_name" [name]="TextSetting.FORM.LAST_NAME" [control]="addUserForm.controls['last_name']"></control-messages>
+                              <div *ngIf="addUserFormError.last_name!=''" class="error-block-form">{{ addUserFormError.last_name }}</div>
+                           </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="email" class="form-label">{{TextSetting.FORM.EMAIL}}</label>
+                              <input type="email"   id="emaildepartment" formControlName="email" class="form-control" placeholder="{{TextSetting.FORM.EMAIL_PLACEHOLDER}}">
+                              <control-messages *ngIf="!addUserFormError.email" [name]="TextSetting.FORM.EMAIL" [control]="addUserForm.controls['email']"></control-messages>
+                              <div *ngIf="addUserFormError.email!=''" class="error-block-form">{{ addUserFormError.email }}</div>
+                           </div>
+                        </div>
+                        <!-- Username -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="username" class="form-label">{{TextSetting.FORM.USER_NAME}}</label>
+                              <input type="text" id="username" formControlName="username" class="form-control" placeholder="{{TextSetting.FORM.USER_NAME}}">
+                              <control-messages *ngIf="!addUserFormError.username" [name]="TextSetting.FORM.USER_NAME" [control]="addUserForm.controls['username']"></control-messages>
+                              <div *ngIf="addUserFormError.username!=''" class="error-block-form">{{ addUserFormError.username }}</div>
+                           </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="col-md-6">
+                           <div class="form-group strong-password">
+                              <label for="password" class="form-label">{{TextSetting.FORM.PASSWORD}}</label>
+                              <div class="password-input-wrapper">
+                                 <input type="password" id="password" ShowHidePasswordDirective class="form-control" formControlName="password" placeholder="{{TextSetting.FORM.PASSWORD_PLACEHOLDER}}">
+                              </div>
+                              <control-messages *ngIf="!addUserFormError.password" [name]="TextSetting.FORM.PASSWORD" [control]="addUserForm.controls['password']"></control-messages>
+                              <div *ngIf="addUserFormError.password!=''" class="error-block-form">{{ addUserFormError.password }}</div>
+                              <!-- Password Strength -->
+                              <app-password-strength [passwordToCheck]="addUserForm.value.password" (passwordStrength)="passwordValid($event)"></app-password-strength>
+                           </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="phone" class="form-label">{{TextSetting.FORM.PHONE_NUMBER}}</label>
+                              <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="{{TextSetting.FORM.ENTER_PHONE_NUMBER}}">
+                              <control-messages *ngIf="!addUserFormError.phone" [name]="TextSetting.FORM.PHONE_NUMBER" [control]="addUserForm.controls['phone']"></control-messages>
+                              <div *ngIf="addUserFormError.phone!=''" class="error-block-form">{{ addUserFormError.phone }}</div>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label class="form-label d-block">{{TextSetting.FORM.ROLE}}</label>
+                              <div class="form-check form-check-inline" *ngFor="let roles of usersRoleData; let j=index">
+                                 <input class="form-check-input" type="radio" id="role_{{j}}" formControlName="role" [value]="roles.type">
+                                 <label class="form-check-label" for="role_{{j}}">{{roles.name}}</label>
+                              </div>
+                              <control-messages *ngIf="!addUserFormError.role" [name]="TextSetting.FORM.ROLE" [control]="addUserForm.controls['role']"></control-messages>
+                              <div *ngIf="addUserFormError.role!=''" class="error-block-form">{{ addUserFormError.role }}</div>
+                           </div>
+                        </div>
+                        <!-- Role + Submit Button in Same Row -->
+                        <!-- <div class="col-md-6 d-flex align-items-center justify-content-between"  *ngIf="addUserForm.get('role')?.value === 'standard'"> -->
+                        <div class="col-md-6 d-flex align-items-center justify-content-between">
+                           <div class="form-group w-100 me-3">
+                              <label for="role" class="form-label">{{TextSetting.FORM.ORGANIZATION_LIST}}</label>
+                              <ng-select 
+                              [items]="organizationData"
+                              bindLabel="organization_name"
+                              bindValue="_id"
+                              placeholder="{{TextSetting.FORM.SELECT_ORGANIZATION}}"
+                              formControlName="organization_ids"
+                              [clearable]="false"
+                              appendTo="ng-select"
+                              appearance="outline">
+                              </ng-select>
+                              <control-messages *ngIf="!addUserFormError.organization_ids" [name]="TextSetting.FORM.ORGANIZATION" [control]="addUserForm.controls['organization_ids']"></control-messages>
+                              <div *ngIf="addUserFormError.organization_ids!=''" class="error-block-form">{{ addUserFormError.organization_ids }}</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <button type="submit" (click)="onAddUserSubmit()" class="btn btn-primary mt-2">
+                           <i class="fas fa-circle-check"></i> Submit
+                           </button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</div>
+<app-loading *ngIf="progress"></app-loading>
