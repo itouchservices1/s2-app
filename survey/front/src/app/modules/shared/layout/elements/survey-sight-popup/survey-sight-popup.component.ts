@@ -49,7 +49,7 @@ export class SurveyPopupComponent implements OnInit, OnDestroy {
             this.navigateToSuper(this.selectedId);
         }
         }else{
-                this.toastrNotification.showError("Please select to proceed further");
+                this.toastrNotification.showError("Please select a survey.");
         }
        
     }

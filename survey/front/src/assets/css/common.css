@@ -241,7 +241,7 @@ body.fullscreen-active #layoutSidenav_content {
   flex-wrap: wrap;
   align-items: center;
   gap: 30px;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s ease;
   border-radius: 10px;
 }
@@ -265,14 +265,14 @@ body.fullscreen-active .btnToggleDashboardFullScreenContainer {
   box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 60%);
 }
 
-.btnToggleDashboardFullScreenContainer .btnToggleDashboardFullScreen i {
-  margin-right: 5px;
-}
-
 .btnToggleDashboardFullScreenContainer .btnToggleDashboardFullScreen:hover {
   background: #014d4e;
 }
 
 .btnToggleDashboardFullScreenContainer .fullscreen-timer-display {
   font-size: 25px;
+}
+
+.toast-container {
+  z-index: 100000 !important;
 }

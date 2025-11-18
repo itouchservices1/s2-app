@@ -9,15 +9,46 @@
                </span>
             </a>
          </div>
+         
+         <div class="footer-content-first-sub-right-section">
+            <a class="footer-help-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#helpModal">
+               <i class="fas fa-question-circle"></i>
+               Help / FAQ
+            </a>
+            <div class="footer-bottom">
+               © {{currentYear}} Survey Sight. All rights reserved.
+            </div>
+         </div>
          <div class="footer-content-first-sub-right-section">
             <a href="" target="_blank">
                <img src="{{env.SITE_IMAGE_URL}}coat_of_arms_of_nigeria.png">
                <span>Federal Republic of Nigeria</span>
             </a>
          </div>
+         <!-- <div class="footer-help-section">
+            <a class="footer-help-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#helpModal">
+               <i class="fas fa-question-circle"></i>
+               Help / FAQ
+            </a>
+         </div> -->
       </div>
    </div>
    <div class="footer-bottom">
-      © 2025 Survey Sight. All rights reserved.
+      <!-- © {{currentYear}} Survey Sight. All rights reserved. -->
    </div>
 </footer>
+
+<!-- Help / FAQ Modal -->
+<div class="modal fade help-modal" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="helpModalLabel">Help / FAQ</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <iframe src="https://docs.google.com/document/d/e/2PACX-1vSw0Lfs_MYp3i18TrMJJ-eyvQuQhNFzyQYHNpH3wcmiw-Kmr0UYjD5MxW-A2W-h57NE3mXew5H_TSFo/pub?embedded=true"></iframe>
+         </div>
+      </div>
+   </div>
+</div>

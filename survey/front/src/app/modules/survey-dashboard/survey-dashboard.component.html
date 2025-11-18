@@ -9,16 +9,16 @@
                <!-- Fullscreen Button Bar -->
                <div class="btnToggleDashboardFullScreenContainer">
                   <!-- Timer Display -->
-                  <span class="fullscreen-timer-display" *ngIf="isFullscreen">
-                     {{ timerDisplay }}
+                  <span title="Screen Refresh Timer" class="fullscreen-timer-display" *ngIf="isFullscreen">
+                     <i title="Go Fullscreen" class="fas fa-refresh fa-sm"></i> {{ timerDisplay }}
                   </span>
                   <button (click)="toggleFullscreen()" class="btnToggleDashboardFullScreen"
                      title="Toggle Fullscreen Mode">
                      <ng-container *ngIf="!isFullscreen">
-                        <i class="fas fa-expand mr-2"></i> Go Fullscreen
+                        <i title="Go Fullscreen" class="fas fa-expand mr-2"></i>
                      </ng-container>
                      <ng-container *ngIf="isFullscreen">
-                        <i class="fas fa-compress mr-2"></i> Exit Fullscreen
+                        <i title="Exit Fullscreen" class="fas fa-compress mr-2"></i>
                      </ng-container>
                   </button>
                </div>

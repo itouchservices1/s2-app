@@ -14,7 +14,7 @@
 
 /* Popup container */
 .popup-box {
-  background: #ffffff;
+  background: linear-gradient(135deg, #E8F7F7 0%, #F0FDFD 50%, #FFFFFF 100%);
   border-radius: 14px;
   width: 520px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
@@ -27,7 +27,7 @@
 .popup-header {
   background-color: #13A8AB;
   color: white;
-  padding: 14px 20px;
+  padding: 10px 20px;
   font-size: 20px;
   font-weight: 600;
   display: flex;
@@ -105,6 +105,14 @@
   background-color: #005c56;
 }
 
+.popup-header {
+  justify-content: flex-end;
+}
+.popup-header span{
+  width: calc(100% - 20px);
+  text-align: center;
+}
+
 /* Animation */
 @keyframes fadeIn {
   from {
@@ -116,3 +124,4 @@
     transform: translateY(0);
   }
 }
+

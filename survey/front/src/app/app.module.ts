@@ -9,7 +9,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi,HTTP_INTERCEPTORS, withFetch } from '@angular/common/http';
 import { SharedService } from './modules/shared/service/shared.service';
-import { AuthGuard} from './guards/index';
+import { AuthGuard,AdminAccessGuard} from './guards/index';
 
 
 
@@ -35,6 +35,7 @@ import { AuthGuard} from './guards/index';
     UserService,
      EncrDecrService,
      AuthGuard, 
+     AdminAccessGuard,
   
     
       {

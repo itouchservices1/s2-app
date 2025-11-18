@@ -5,9 +5,9 @@
 
 const API_BASE_URL = 'http://10.0.0.106/api/';
 const FRONT_URL = 'http://10.0.0.106';
-const SUPERSET_BASE_URL = 'http://10.0.0.106:8088';
+const SUPERSET_BASE_URL   = 'http://10.0.0.106:8088/';
 
-export const environment = {
+ export const environment = {
     production                                    : false,
     DEBUG_BASE64_DATA                             : true,
     ENCRIPT_API                                   : 0,

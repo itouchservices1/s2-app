@@ -59,7 +59,7 @@ export class AddOrganizationComponent implements OnInit, OnDestroy {
             parent_organization : [null],
             email               : ['', [Validators.required, ValidationService.emailValidator]],
             phone               :  ['',Validators.required],
-            country             : ['', Validators.required],
+            country             : ['Nigeria', Validators.required],
             state               : ['', Validators.required],
             city                : ['', Validators.required],
             street              : ['', Validators.required],

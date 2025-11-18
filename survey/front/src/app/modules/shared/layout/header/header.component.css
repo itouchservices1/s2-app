@@ -1,22 +1,97 @@
 .navbar {
-  /* background: #94DCDD !important; */
-  background: #13A8AB !important;
-  border: 1px solid #014D4E;
+  background: linear-gradient(135deg, #B8E6E8 0%, #A8DDE0 25%, #9ED5D8 50%, #8ECCD0 75%, #7EC3C8 100%) !important;
+  border: none;
+  box-shadow: 0 2px 8px rgba(1, 77, 78, 0.1);
+  padding: 0.75rem 0;
+  min-height: 70px;
 }
+
+.header-container {
+  /* max-width: 1200px; */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
 .sb-topnav .navbar-brand {
   width: auto;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
-.fas{
+
+.sb-topnav .navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand img {
+  height: 45px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 2px 4px rgba(1, 77, 78, 0.2));
+  transition: filter 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  filter: drop-shadow(0 4px 8px rgba(1, 77, 78, 0.3));
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.nav-link {
+  color: #014D4E !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #013A3B !important;
+}
+
+.fas {
   color: #014D4E;
+  font-size: 1.1rem;
 }
+
 .dropdown-toggle::after {
   color: #014D4E;
 }
-.navbar-brand img {
-  height: 40px !important;
-  width: auto !important;
-  object-fit: contain !important;
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 12px rgba(1, 77, 78, 0.15);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
 }
-.navbar-nav .dropdown-menu.show .dropdown-item{
+
+.dropdown-item {
+  color: #014D4E !important;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(184, 230, 232, 0.3);
+  color: #013A3B !important;
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0;
+  border-color: rgba(1, 77, 78, 0.1);
+}
+
+.navbar-nav .dropdown-menu.show .dropdown-item {
   color: #014D4E;
 }
