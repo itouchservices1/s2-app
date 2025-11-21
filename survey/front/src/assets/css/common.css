@@ -247,9 +247,10 @@ body.fullscreen-active #layoutSidenav_content {
 }
 body.fullscreen-active .btnToggleDashboardFullScreenContainer {
   padding: 10px 10px 12px 10px;
+  opacity: 0.4;
 }
 
-.btnToggleDashboardFullScreenContainer:hover {
+body.fullscreen-active .btnToggleDashboardFullScreenContainer:hover {
     opacity: 1.0;
 }
 
@@ -270,7 +271,7 @@ body.fullscreen-active .btnToggleDashboardFullScreenContainer {
 }
 
 .btnToggleDashboardFullScreenContainer .fullscreen-timer-display {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .toast-container {

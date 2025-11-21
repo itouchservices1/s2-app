@@ -7,53 +7,54 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './service/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ERROR_MESSAGES } from '../../global-error';
+
 @Component({
-    selector        : 'app-login',
-    standalone      : false,
-    providers       : [LoginService, SeoService],
-    templateUrl     : './login.component.html',
-    styleUrl        : './login.component.css'
+    selector: 'app-login',
+    standalone: false,
+    providers: [LoginService, SeoService],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
     /**For used to prevent memory leaks */
-    private ngUnsubscribe: Subject <void> = new Subject < void > ();
+    private ngUnsubscribe: Subject<void> = new Subject<void>();
     /**Declare Variables */
-    env                                 = environment;
-    TextSetting                         = TextSetting;
-    errorMessage                        = ERROR_MESSAGES
-    progress                : boolean   = false;
-    rememberMeValue         : boolean   = false;
-    loginForm               : FormGroup;
-    loginFormError          : any       = {};
-    remeberMeData           : any       = {};
-    dataloading             : any       = true;
+    env = environment;
+    TextSetting = TextSetting;
+    errorMessage = ERROR_MESSAGES
+    progress: boolean = false;
+    rememberMeValue: boolean = false;
+    loginForm: FormGroup;
+    loginFormError: any = {};
+    remeberMeData: any = {};
+    dataloading: any = true;
     /** Define Constructor */
     constructor(
-        private formBuilder             : FormBuilder,
-        private loginService            : LoginService,
-        private router                  : Router,
-        public toastrNotification       : NgxToasterService,
-        public userService              : UserService,
-        private commonFunctionService   : CommonFunctionsService,
-        public route                    : ActivatedRoute,
-        public seoService               : SeoService,
+        private formBuilder: FormBuilder,
+        private loginService: LoginService,
+        private router: Router,
+        public toastrNotification: NgxToasterService,
+        public userService: UserService,
+        private commonFunctionService: CommonFunctionsService,
+        public route: ActivatedRoute,
+        public seoService: SeoService,
     ) {
         /** For used to initialize form froup */
         this.loginForm = this.formBuilder.group({});
     }
     /** For used to initialize Component */
-    ngOnInit(): void { 
-        
+    ngOnInit(): void {
+
         this.commonFunctionService.isBrowser.subscribe((isBrowser: any) => {
             if (isBrowser) {
-        const user = this.userService.getCurrentUser();
-        if (user && Object.keys(user).length > 0) {
-          this.router.navigateByUrl('/home');
-        } else {
-          this.dataloading = false; // show form only if not logged in
-        }
-    }
-})
+                const user = this.userService.getCurrentUser();
+                if (user && Object.keys(user).length > 0) {
+                    this.router.navigateByUrl('/home');
+                } else {
+                    this.dataloading = false; // show form only if not logged in
+                }
+            }
+        })
 
 
 
@@ -75,7 +76,7 @@ export class LoginComponent {
         this.loginForm = this.formBuilder.group({
             email: ['', Validators.required],
             password: ["", Validators.required]
-         
+
         });
     }
     /**

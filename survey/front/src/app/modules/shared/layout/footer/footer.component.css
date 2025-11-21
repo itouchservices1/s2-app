@@ -59,7 +59,7 @@ footer .footer-content .footer-content-first-section {
 }
 
 .footer-help-link {
-  color: #014D4E !important;
+  color: #FFFFFF !important;
   text-decoration: none;
   font-size: 0.95rem;
   padding: 0.5rem 1rem;
@@ -69,6 +69,7 @@ footer .footer-content .footer-content-first-section {
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  background: #014d4e;
 }
 
 .footer-help-link:hover {

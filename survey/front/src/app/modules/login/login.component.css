@@ -4,165 +4,169 @@
   text-decoration: none;
   color: #fff;
 }
+
 .back-to-home {
   position: absolute;
 }
-.login-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 25%, #80deea 50%, #4dd0e1 75%, #26c6da 100%);
-    padding: clamp(2rem, 4vw, 4rem);
-    min-height: 100vh;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  
-  .gradient-orb {
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.4;
-    z-index: 0;
-    background: radial-gradient(circle, rgba(77, 182, 172, 0.3) 0%, rgba(255,255,255,0) 70%);
-  }
-  
-  .orb-one {
-    top: -120px;
-    right: -60px;
-  }
-  
-  .orb-two {
-    bottom: -140px;
-    left: -40px;
-    background: radial-gradient(circle, rgba(38, 198, 218, 0.3) 0%, rgba(255,255,255,0) 70%);
-  }
-  
-  /* Login Box */
-  .login-box {
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 48px 40px 40px;
-    border-radius: 24px;
-    width: min(420px, 100%);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(38, 198, 218, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Logo Styling */
-  .logo-wrapper {
-    margin-bottom: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .isas-logo {
-    width: 100px;
-    height: auto;
-    filter: drop-shadow(0 4px 12px rgba(38, 198, 218, 0.2));
-    transition: transform 0.3s ease, filter 0.3s ease;
-  }
-  
-  .isas-logo:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 6px 16px rgba(38, 198, 218, 0.3));
-  }
-  
-  /* Heading */
-.login-box h2 {
-    color: #00838f;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 32px;
-    font-size: 24px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
 
-  /* Labels */
-  .form-group label {
-    color: #424242;
-    font-weight: 500;
-    text-align: left;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-  }
-  
-  /* Input Fields */
-  .form-control {
-    border-radius: 12px;
-    height: 48px;
-    font-size: 15px;
-    margin-bottom: 5px;
-    border: 1.5px solid rgba(38, 198, 218, 0.2);
-    background: #ffffff;
-    transition: all 0.2s ease;
-    padding: 0 16px;
-  }
-  
-  .form-control:focus {
-    border-color: #26c6da;
-    box-shadow: 0 0 0 4px rgba(38, 198, 218, 0.1);
-    outline: none;
-  }
-  
-  /* Button Styling */
-  .btn-primary {
-    background: linear-gradient(135deg, #26c6da 0%, #00acc1 100%);
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 14px;
-    border-radius: 12px;
-    width: 100%;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 16px rgba(38, 198, 218, 0.3);
-    color: #ffffff;
-    margin-top: 8px;
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(38, 198, 218, 0.4);
-    background: linear-gradient(135deg, #29d5ea 0%, #00bcd4 100%);
-  }
-  
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-  
-  /* Forgot Password Link */
-  .forgot-password {
-    color: #00838f;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .forgot-password:hover {
-    text-decoration: underline;
-  }
-  
-  /* Button group padding */
-  .login-button-group {
-    padding-top: 24px;
-  }
-  
-  /* Extra login links */
+.login-container {
+  position: relative;
+  display: flex;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 25%, #80deea 50%, #4dd0e1 75%, #26c6da 100%);
+  padding: clamp(2rem, 4vw, 4rem);
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gradient-orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.4;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(77, 182, 172, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.orb-one {
+  top: -120px;
+  right: -60px;
+}
+
+.orb-two {
+  bottom: -140px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(38, 198, 218, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Login Box */
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 48px 40px 40px;
+  border-radius: 24px;
+  width: min(420px, 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(38, 198, 218, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Logo Styling */
+.logo-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.isas-logo {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(38, 198, 218, 0.2));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.isas-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 16px rgba(38, 198, 218, 0.3));
+}
+
+/* Heading */
+.login-box h2 {
+  color: #00838f;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.form-group label {
+  color: #424242;
+  font-weight: 500;
+  text-align: left;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Input Fields */
+.form-control {
+  border-radius: 12px;
+  height: 48px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  border: 1.5px solid rgba(38, 198, 218, 0.2);
+  background: #ffffff;
+  transition: all 0.2s ease;
+  padding: 0 16px;
+}
+
+.form-control:focus {
+  border-color: #26c6da;
+  box-shadow: 0 0 0 4px rgba(38, 198, 218, 0.1);
+  outline: none;
+}
+
+/* Button Styling */
+.btn-primary {
+  background: linear-gradient(135deg, #26c6da 0%, #00acc1 100%);
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 12px;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(38, 198, 218, 0.3);
+  color: #ffffff;
+  margin-top: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(38, 198, 218, 0.4);
+  background: linear-gradient(135deg, #29d5ea 0%, #00bcd4 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  color: #00838f;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Button group padding */
+.login-button-group {
+  padding-top: 24px;
+}
+
+/* Extra login links */
 .login-extra-links {
   margin-top: 15px;
   font-size: 14px;
 }
 
-  .login-link {
+.login-link {
   color: #00838f;
   text-decoration: none;
   margin: 0 5px;
@@ -193,8 +197,8 @@
 
 .btn-signup {
   background: rgba(38, 198, 218, 0.1);
-  color     : #00838f;
-  padding   : 8px 20px;
+  color: #00838f;
+  padding: 8px 20px;
   border-radius: 999px;
   font-size: 14px;
   text-decoration: none;
@@ -212,4 +216,37 @@
   color: #d32f2f;
   font-size: 13px;
   margin-top: 4px;
+}
+
+.login-box2 {
+  max-width: 420px;
+  width: 100%;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+}
+
+.login-box2 .loginBox2Heading {
+  text-align: center;
+  color: #00838f;
+}
+
+.login-box2 .surveySightFeature {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.login-box2 .surveySightFeature li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.login-box2 .surveySightFeature li img{
+  height: 32px;
 }

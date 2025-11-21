@@ -11,6 +11,7 @@ export const TextSetting = {
     EDIT_USERS_TITLE                    : "Edit User",
     USER_LISTING_TITLE                  : "Users",     
     ADMIN_DASHBOARD                     : "Dashboard",
+    LOGIN_ACTION_WORDS                  : "Monitor. Track. Analyze.",
   
     FILE_LIST_TITLE                     : "File List",
     ADD_FIILES_TITLE                    : "Add Files",

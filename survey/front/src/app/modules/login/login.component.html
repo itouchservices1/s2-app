@@ -7,7 +7,8 @@
       </div> -->
       <div class="logo-wrapper">
          <img src="{{env.SITE_IMAGE_URL}}survey-logo.png" alt="ISAS Logo" class="isas-logo" />
-       </div>
+      </div>
+      <p>{{TextSetting.LOGIN_ACTION_WORDS}}</p>
       <h2 class="text-center"> LOGIN</h2>
       <form [formGroup]="loginForm">
          <div class="form-group">
@@ -41,6 +42,15 @@
             </div> -->
          </div>
       </form>
+   </div>
+   <div class="login-box2">
+      <h5 class="loginBox2Heading">Survey Sight</h5>
+      <ul class="surveySightFeature">
+         <!-- <li><i class="fa-solid fa-alarm-clock fa-2xl" style="color: #014d4e;"></i><span>Real-time Visibility</span></li> -->
+         <li><img src="{{env.SITE_IMAGE_URL}}bar-chart.png" border="0" /><span>Real-time Visibility</span></li>
+         <li><img src="{{env.SITE_IMAGE_URL}}check.png" border="0" /><span>Data Integrity</span></li>
+         <li><img src="{{env.SITE_IMAGE_URL}}telescope.png" border="0" /><span>Field Monitoring</span></li>
+      </ul>
    </div>
 </div>
 <app-loading *ngIf="progress"></app-loading>
