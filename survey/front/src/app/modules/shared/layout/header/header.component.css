@@ -1,5 +1,35 @@
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
 .navbar {
-  background: linear-gradient(135deg, #B8E6E8 0%, #A8DDE0 25%, #9ED5D8 50%, #8ECCD0 75%, #7EC3C8 100%) !important;
+  /* background: linear-gradient(135deg, #B8E6E8 0%, #A8DDE0 25%, #9ED5D8 50%, #8ECCD0 75%, #7EC3C8 100%) !important; */
+  -webkit-animation: 60s linear 0s normal none infinite animate;
+	-moz-animation: 60s linear 0s normal none infinite animate;
+	-ms-animation: 60s linear 0s normal none infinite animate;
+	-o-animation: 60s linear 0s normal none infinite animate;
+	animation: 60s linear 0s normal none infinite animate;
   border: none;
   box-shadow: 0 2px 8px rgba(1, 77, 78, 0.1);
   padding: 0.75rem 0;

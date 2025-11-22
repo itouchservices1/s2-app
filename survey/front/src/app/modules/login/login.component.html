@@ -1,4 +1,4 @@
-<div class="login-container" *ngIf="!dataloading">
+<div class="login-container" *ngIf="!dataloading" style="background: url({{env.SITE_IMAGE_URL}}hf_background_300_300.png) repeat 0 0;">
    <div class="gradient-orb orb-one"></div>
    <div class="gradient-orb orb-two"></div>
    <div class="login-box">
@@ -8,7 +8,7 @@
       <div class="logo-wrapper">
          <img src="{{env.SITE_IMAGE_URL}}survey-logo.png" alt="ISAS Logo" class="isas-logo" />
       </div>
-      <p>{{TextSetting.LOGIN_ACTION_WORDS}}</p>
+      <p class="actionWords">{{TextSetting.LOGIN_ACTION_WORDS}}</p>
       <h2 class="text-center"> LOGIN</h2>
       <form [formGroup]="loginForm">
          <div class="form-group">
@@ -44,7 +44,6 @@
       </form>
    </div>
    <div class="login-box2">
-      <h5 class="loginBox2Heading">Survey Sight</h5>
       <ul class="surveySightFeature">
          <!-- <li><i class="fa-solid fa-alarm-clock fa-2xl" style="color: #014d4e;"></i><span>Real-time Visibility</span></li> -->
          <li><img src="{{env.SITE_IMAGE_URL}}bar-chart.png" border="0" /><span>Real-time Visibility</span></li>

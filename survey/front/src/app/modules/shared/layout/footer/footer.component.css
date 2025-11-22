@@ -1,5 +1,61 @@
+@-webkit-keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 500px 0;
+  }
+}
+
+@-moz-keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 500px 0;
+  }
+}
+
+@-ms-keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 500px 0;
+  }
+}
+
+@-o-keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 500px 0;
+  }
+}
+
+@keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 500px 0;
+  }
+}
+
 footer {
-  background: linear-gradient(135deg, #B8E6E8 0%, #A8DDE0 25%, #9ED5D8 50%, #8ECCD0 75%, #7EC3C8 100%) !important;
+  /* background: linear-gradient(135deg, #B8E6E8 0%, #A8DDE0 25%, #9ED5D8 50%, #8ECCD0 75%, #7EC3C8 100%) !important; */
+  /* background: #B8E6E8 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0; */
+  -webkit-animation: 50s linear 0s normal none infinite animate;
+  -moz-animation: 50s linear 0s normal none infinite animate;
+  -ms-animation: 50s linear 0s normal none infinite animate;
+  -o-animation: 50s linear 0s normal none infinite animate;
+  animation: 50s linear 0s normal none infinite animate;
   color: #014D4E;
   padding: 20px 20px;
   font-family: 'Poppins', sans-serif;
@@ -25,10 +81,9 @@ footer {
 
 .footer-bottom {
   text-align: center;
-  margin-top: 15px;
+  /* margin-top: 80px; */
   font-size: 0.9rem;
   color: #014D4E;
-  padding-top: 10px;
 }
 
 @media (max-width: 991px) {
@@ -111,7 +166,9 @@ footer .footer-content .footer-content-first-section {
   display: block;
 }
 
-footer .footer-content .footer-content-first-section .footer-content-first-sub-left-section a, footer .footer-content .footer-content-first-section .footer-content-first-sub-right-section a {
+footer .footer-content .footer-content-first-section .footer-content-first-sub-left-section a,
+footer .footer-content .footer-content-first-section .footer-content-first-sub-ccenter-section a,
+footer .footer-content .footer-content-first-section .footer-content-first-sub-right-section a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,15 +177,26 @@ footer .footer-content .footer-content-first-section .footer-content-first-sub-l
   text-decoration: none;
 }
 
-footer .footer-content .footer-content-first-section .footer-content-first-sub-left-section a img, footer .footer-content .footer-content-first-section .footer-content-first-sub-right-section a img{
+footer .footer-content .footer-content-first-section .footer-content-first-sub-center-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 65px;
+}
+
+footer .footer-content .footer-content-first-section .footer-content-first-sub-left-section a img,
+footer .footer-content .footer-content-first-section .footer-content-first-sub-right-section a img {
   max-height: 100px;
 }
-footer .footer-bottom{
+
+footer .footer-bottom {
   color: #014D4E;
 }
 
-.modal-dialog-scrollable .modal-body{
-    overflow-y: hidden !important;
+.modal-dialog-scrollable .modal-body {
+  overflow-y: hidden !important;
 }
 
 @media (max-width: 450px) {

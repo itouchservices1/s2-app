@@ -1,3 +1,28 @@
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
 /* Full-page background */
 
 .home-anchor {
@@ -12,7 +37,12 @@
 .login-container {
   position: relative;
   display: flex;
-  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 25%, #80deea 50%, #4dd0e1 75%, #26c6da 100%);
+  /* background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 25%, #80deea 50%, #4dd0e1 75%, #26c6da 100%); */
+  -webkit-animation: 60s linear 0s normal none infinite animate;
+	-moz-animation: 60s linear 0s normal none infinite animate;
+	-ms-animation: 60s linear 0s normal none infinite animate;
+	-o-animation: 60s linear 0s normal none infinite animate;
+	animation: 60s linear 0s normal none infinite animate;
   padding: clamp(2rem, 4vw, 4rem);
   min-height: 100vh;
   overflow: hidden;
@@ -60,7 +90,7 @@
 
 /* Logo Styling */
 .logo-wrapper {
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,6 +115,9 @@
   letter-spacing: 0.05em;
   margin-bottom: 32px;
   font-size: 24px;
+}
+.login-box .actionWords {
+  font-size: 14px;
 }
 
 .form-group {
@@ -221,9 +254,10 @@
 .login-box2 {
   max-width: 420px;
   width: 100%;
-  margin: 40px auto;
+  margin: 20px auto;
   background: #ffffff;
-  padding: 30px;
+  padding: 20px;
+  border-radius: 24px;
 }
 
 .login-box2 .loginBox2Heading {
@@ -237,7 +271,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 30px;
+  margin: 0px;
 }
 
 .login-box2 .surveySightFeature li {
